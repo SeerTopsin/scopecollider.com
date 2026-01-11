@@ -51,51 +51,83 @@
 <body>
   <div class="container">
 
-    <!-- ScopeCollider wordmark -->
+    <!-- ScopeCollider wordmark (tight, logo-grade SVG) -->
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 1200 300"
+      viewBox="0 0 1200 200"
       role="img"
       aria-label="ScopeCollider"
-      style="display:block; margin:0 auto; max-width:720px; width:100%; height:auto;"
+      style="display:block; margin:0 auto 1.4rem; max-width:720px; width:100%; height:auto;"
     >
-      <title>ScopeCollider</title>
+      <defs>
+        <style>
+          :root {
+            --fill: #fff;
+            --font: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                    Helvetica, Arial, sans-serif;
 
-      <style>
-        .w {
-          fill: #fff;
-          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-                       Helvetica, Arial, sans-serif;
-          font-size: 112px;
-          font-weight: 800;
-          font-style: italic;
-          letter-spacing: 6px;
-        }
-        .hex {
-          fill: #fff;
-        }
-      </style>
+            --fs: 112px;
+            --fw: 800;
+            --italic: italic;
+            --ls: 6px;
 
-      <!-- Left text: "ScopeC" -->
-      <text class="w" x="0" y="190">ScopeC</text>
+            --baseline: 136px;
 
-      <!-- Hexagon replacing the "o" in Collider -->
-      <g transform="translate(625, 160)">
+            /* primary tuning knobs */
+            --hex_r: 34px;     /* hex size */
+            --gap: 4px;        /* VERY tight spacing */
+          }
+
+          .word {
+            fill: var(--fill);
+            font-family: var(--font);
+            font-size: var(--fs);
+            font-weight: var(--fw);
+            font-style: var(--italic);
+            letter-spacing: var(--ls);
+          }
+
+          .hex {
+            fill: var(--fill);
+          }
+        </style>
+      </defs>
+
+      <!-- Left text -->
+      <text class="word" x="0" y="0" transform="translate(0, var(--baseline))">
+        ScopeC
+      </text>
+
+      <!-- Hexagon (acts as the "o") -->
+      <g transform="translate(610, 112)">
         <polygon
           class="hex"
           points="
-            0,-34
-            29.444, -17
-            29.444, 17
-            0, 34
-            -29.444, 17
-            -29.444, -17
+            0,-1
+            0.8660254,-0.5
+            0.8660254,0.5
+            0,1
+            -0.8660254,0.5
+            -0.8660254,-0.5
           "
+          transform="scale(var(--hex_r))"
         />
       </g>
 
-      <!-- Right text: "llider" -->
-      <text class="w" x="675" y="190">llider</text>
+      <!-- Right text: tightly coupled -->
+      <text
+        class="word"
+        x="0"
+        y="0"
+        transform="
+          translate(
+            calc(610px + (0.8660254 * var(--hex_r)) + var(--gap)),
+            var(--baseline)
+          )
+        "
+      >
+        llider
+      </text>
     </svg>
 
     <div class="tagline">Where ambiguity collapses into execution.</div>
