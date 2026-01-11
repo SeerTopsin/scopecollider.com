@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ScopeCollider</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      color: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                   Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .container {
+      line-height: 1.4;
+    }
+
+    .tagline {
+      font-size: 1.15rem;
+      opacity: 0.9;
+      margin-bottom: 1.6rem;
+    }
+
+    .contact {
+      font-size: 0.9rem;
+      opacity: 0.7;
+      margin-bottom: 1.6rem;
+    }
+
+    .hook {
+      font-size: 0.8rem;
+      opacity: 0.5;
+      letter-spacing: 0.08em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- ScopeCollider wordmark (parameterized SVG)
+     Drop this where your <h1> was.
+     Tweak ONLY the CSS variables in :root (first block).
+-->
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 1200 200"
+  role="img"
+  aria-label="ScopeCollider"
+  style="display:block; margin:0 auto; max-width:720px; width:100%; height:auto;"
+>
+  <defs>
+    <style>
+      /* =========================
+         PARAMETERS (TWEAK HERE)
+         ========================= */
+      :root {
+        --fill: #fff;                 /* mark color */
+        --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+
+        --fs: 112px;                  /* font size */
+        --fw: 800;                    /* font weight */
+        --italic: italic;             /* italic or normal */
+        --ls: 6px;                    /* letter spacing */
+
+        --baselineY: 136px;           /* baseline position */
+
+        --x_left: 0px;                /* x position for "ScopeC" */
+
+        --hex_cx: 625px;              /* hex center x (primary tuning knob) */
+        --hex_cy: 112px;              /* hex center y (typically baselineY - ~24) */
+
+        --hex_r: 34px;                /* hex radius (size) */
+        --gap: 10px;                  /* gap between text and hex */
+
+        --right_x: 675px;             /* x position for "llider" (tune this) */
+      }
+
+      /* =========================
+         STYLES (usually leave)
+         ========================= */
+      .w {
+        fill: var(--fill);
+        font-family: var(--font);
+        font-size: var(--fs);
+        font-weight: var(--fw);
+        font-style: var(--italic);
+        letter-spacing: var(--ls);
+      }
+      .hex {
+        fill: var(--fill);
+      }
+    </style>
+  </defs>
+
+  <!-- Left text: "ScopeC" -->
+  <text class="w" x="0" y="0" transform="translate(var(--x_left), var(--baselineY))">
+    ScopeC
+  </text>
+
+  <!-- Hexagon: regular, vertical sides, top/bottom vertices
+       Unit hex points (r=1):
+         (0,-1), (√3/2,-1/2), (√3/2,1/2), (0,1), (-√3/2,1/2), (-√3/2,-1/2)
+       Scaled by --hex_r and translated to (--hex_cx, --hex_cy)
+  -->
+  <g transform="translate(var(--hex_cx), var(--hex_cy))">
+    <polygon
+      class="hex"
+      points="
+        0,-1
+        0.8660254,-0.5
+        0.8660254,0.5
+        0,1
+        -0.8660254,0.5
+        -0.8660254,-0.5
+      "
+      transform="scale(var(--hex_r))"
+    />
+  </g>
+
+  <!-- Right text: "llider"
+       Positioned as: (hex center x) + (hex width/2) + gap
+       hex width/2 = (√3/2) * r ≈ 0.8660254 * r
+  -->
+    <text
+    class="w"
+    x="0" y="0"
+    transform="translate(var(--right_x), var(--baselineY))"
+  >
+    llider
+  </text>
+</svg>
+    <div class="tagline">Where ambiguity collapses into execution</div>
+    <div class="contact">contact@youremail.com</div>
+    <div class="hook">Embrace the grey</div>
+  </div>
+</body>
+</html>
